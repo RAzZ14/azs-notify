@@ -1,10 +1,11 @@
 Config = {}
 Config.Position = 'top-right'
 
--- [[ Configurações de Áudio ]]
+-- [[ Audio Settings ]]
 Config.PlaySound = true
 Config.SoundFile = 'sounds/notification.mp3'
 Config.SoundVolume = 0.2
 
--- [[ Configurações de Animação ]]
+-- [[ Animation Settings ]]
+
 Config.DefaultDuration = 5000
