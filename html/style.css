@@ -1,0 +1,115 @@
+html, body {
+    background: transparent !important;
+    overflow: hidden !important;
+    width: 100%;
+    height: 100%;
+}
+
+:root {
+    --color-success: #2ecc71;
+    --bg-success: rgba(20, 50, 30, 0.8);
+
+    --color-error: #e74c3c;
+    --bg-error: rgba(50, 20, 20, 0.8);
+
+    --color-warning: #f1c40f;
+    --bg-warning: rgba(50, 40, 20, 0.8);
+
+    --color-info: #3498db;
+    --bg-info: rgba(20, 30, 50, 0.8);
+    
+    --notification-text-color: #eee;
+    --notification-border-radius: 3px;
+    --notification-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    --notification-gap: 14px;
+    --notification-width: 320px;
+}
+
+#notification-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: var(--notification-gap);
+    width: var(--notification-width);
+    z-index: 9999;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    gap: var(--notification-gap);
+    background: rgba(30, 30, 45, 0.4);
+    border-radius: var(--notification-border-radius);
+    padding: 14px 20px;
+    box-shadow: var(--notification-shadow);
+    color: var(--notification-text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    overflow: hidden;
+    position: relative;
+    cursor: default;
+    animation: slideFadeIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+.notification.success {
+    color: var(--color-success);
+    background: var(--bg-success);
+}
+.notification.error {
+    color: var(--color-error);
+    background: var(--bg-error);
+}
+.notification.warning {
+    color: var(--color-warning);
+    background: var(--bg-warning);
+}
+.notification.info {
+    color: var(--color-info);
+    background: var(--bg-info);
+}
+
+.notification .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+.notification svg {
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+}
+
+.notification .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.notification.success .progress-bar { background-color: var(--color-success); }
+.notification.error .progress-bar { background-color: var(--color-error); }
+.notification.warning .progress-bar { background-color: var(--color-warning); }
+.notification.info .progress-bar { background-color: var(--color-info); }
+
+@keyframes slideFadeIn {
+    from { opacity: 0; transform: translateX(100%); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFadeOut {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(100%); }
+}
+
+@keyframes progress {
+    from { width: 100%; }
+    to { width: 0; }
+}
